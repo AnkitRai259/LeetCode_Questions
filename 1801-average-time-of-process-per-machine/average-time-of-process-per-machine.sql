@@ -2,7 +2,7 @@
 With cte as (
     SELECT machine_id, process_id, 
     MAX(CASE WHEN activity_type = "start" then timestamp end )as Start, 
-    MAX(CASE WHEN activity_type = 'end' then timestamp end ) as endl, Count(*) as nl
+    MAX(CASE WHEN activity_type = 'end' then timestamp end ) as endl
     from Activity
     Group by process_id, machine_id) 
 
