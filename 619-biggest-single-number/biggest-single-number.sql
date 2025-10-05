@@ -1,7 +1,8 @@
 # Write your MySQL query statement below
-Select MAX(num) as num
-from MyNumbers
-Where num in ( Select num
-from MyNumbers
-Group by num
-having count(*)=1);
+WITH CTE AS (SELECT num
+FROM MyNumbers
+GROUP BY num
+HAVING COUNT(*)=1
+)
+SELECT MAX(num) as num
+FROM cte
